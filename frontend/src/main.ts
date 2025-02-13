@@ -1,4 +1,4 @@
-import { greet } from '../../pkg;
+import { greet } from '../../pkg';
 
 function run() {
   greet('Expo!');
