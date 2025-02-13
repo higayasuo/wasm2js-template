@@ -20,6 +20,15 @@ export function getWasmPackageName() {
   return getPackageName().replace(/-/g, '_');
 }
 
+export function getPackageVersion() {
+  const cargoPath = getCargoPath();
+  const cargoContent = fs.readFileSync(cargoPath, 'utf8');
+  const cargoData = toml.parse(cargoContent);
+  return cargoData.package.version;
+}
+
 export function getZipFileName() {
-  return getPackageName();
+  const name = getPackageName();
+  const version = getPackageVersion();
+  return `${name}-${version}`;
 }
