@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf pkg target dist",
     "build": "npm run clean && npm run build:wasm && npm run wasm2js && npm run build:zip",
-    "build:wasm": "wasm-pack build --manifest-path ../Cargo.toml --out-dir ./pkg",
+    "build:wasm": "cd .. && wasm-pack build --out-dir ./wasm2js/pkg",
     "wasm2js": "node scripts/wasm2js.js",
     "build:zip": "node scripts/create-zip.js",
     "dev": "cd frontend && vite",

@@ -2,11 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import toml from '@iarna/toml';
 import { fileURLToPath } from 'url';
-
+import { getCargoPath } from './utils.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function updateWasmDeps() {
-  const cargoPath = path.join(__dirname, '..', 'Cargo.toml');
+  const cargoPath = getCargoPath();
   const cargoContent = fs.readFileSync(cargoPath, 'utf8');
   const cargoData = toml.parse(cargoContent);
 
