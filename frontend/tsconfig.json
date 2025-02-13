@@ -25,6 +25,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"],
-  "references": [{ "path": "./vite.config.ts" }]
+  "include": ["src"]
 }
