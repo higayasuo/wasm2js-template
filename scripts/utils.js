@@ -1,24 +1,21 @@
-const path = require('path');
-const fs = require('fs');
-const toml = require('@iarna/toml');
+import path from 'path';
+import fs from 'fs';
+import toml from '@iarna/toml';
+import { fileURLToPath } from 'url';
 
-function getPackageName() {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export function getPackageName() {
   const cargoPath = path.join(__dirname, '..', 'Cargo.toml');
   const cargoContent = fs.readFileSync(cargoPath, 'utf8');
   const cargoData = toml.parse(cargoContent);
   return cargoData.package.name;
 }
 
-function getWasmPackageName() {
+export function getWasmPackageName() {
   return getPackageName().replace(/-/g, '_');
 }
 
-function getZipFileName() {
+export function getZipFileName() {
   return getPackageName();
 }
-
-module.exports = {
-  getPackageName,
-  getWasmPackageName,
-  getZipFileName
-};

@@ -1,6 +1,6 @@
-const fs = require('fs');
-const { execSync } = require('child_process');
-const { getZipFileName } = require('./utils');
+import fs from 'fs';
+import { execSync } from 'child_process';
+import { getZipFileName } from './utils.js';
 
 const packageName = getZipFileName();
 const distDir = 'dist';

@@ -1,6 +1,6 @@
-const fs = require('fs');
-const { execSync } = require('child_process');
-const { getWasmPackageName } = require('./utils');
+import fs from 'fs';
+import { execSync } from 'child_process';
+import { getWasmPackageName } from './utils.js';
 
 const packageName = getWasmPackageName();
 const pkgDir = 'pkg';
