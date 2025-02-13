@@ -1,0 +1,20 @@
+{
+  "name": "wasm2js",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "clean": "rimraf pkg target dist",
+    "build": "npm run clean && npm run build:wasm && npm run wasm2js && npm run build:zip",
+    "build:wasm": "wasm-pack build",
+    "wasm2js": "node scripts/wasm2js.js",
+    "build:zip": "node scripts/create-zip.js",
+    "dev": "cd frontend && vite"
+  },
+  "devDependencies": {
+    "@iarna/toml": "^2.2.5",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "wasm-pack": "^0.12.1"
+  }
+}
