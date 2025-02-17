@@ -7,7 +7,7 @@ This template is designed to be used as a subdirectory within a wasm-pack projec
 The template includes several utility scripts to:
 - Convert WebAssembly to JavaScript
 - Update Rust dependencies to compatible versions
-- Create distributable packages
+- Create distributable npm packages
 
 ## Scripts
 
@@ -26,8 +26,8 @@ npm run build:wasm
 # Convert Wasm to JavaScript
 npm run wasm2js
 
-# Create distribution zip
-npm run build:zip
+# Create npm package
+npm run pack
 
 # Start development server
 npm run dev
@@ -42,6 +42,7 @@ npm run update:cargo-deps
 This script converts the WebAssembly module to JavaScript using `wasm2js` tool. It performs the following tasks:
 - Converts the `.wasm` file to a JavaScript file
 - Updates the module imports to use the JavaScript version instead of WebAssembly
+- Updates the package.json files array to include necessary files
 
 #### update-cargo-deps.js
 This script manages Rust dependencies in your `Cargo.toml` file:
@@ -51,8 +52,8 @@ This script manages Rust dependencies in your `Cargo.toml` file:
 
 These versions are specifically chosen for compatibility with the wasm2js conversion process.
 
-#### create-zip.js
-Creates a distributable zip package containing the converted JavaScript files and related assets.
+#### pack.js
+Creates a distributable npm package containing the converted JavaScript files and related assets using `npm pack`.
 
 ## Usage
 
@@ -69,16 +70,16 @@ The build process will:
 1. Clean previous build artifacts
 2. Build the WebAssembly module
 3. Convert it to JavaScript
-4. Create a distribution package
+4. Create a npm package
 
 ### Using the Generated Package
 
-The build process creates a zip file in the `dist` directory. You can use this package in other projects by adding it to their dependencies in `package.json`:
+The build process creates a `.tgz` file in the `pkg` directory. You can use this package in other projects by adding it to their dependencies in `package.json`:
 
 ```json
 {
   "dependencies": {
-    "your-package-name": "file:path/to/your-package-name.zip"
+    "your-package-name": "file:path/to/your-package-name-1.0.0.tgz"
   }
 }
 ```

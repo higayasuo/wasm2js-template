@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "clean": "rimraf pkg target dist",
-    "build": "npm run clean && npm run build:wasm && npm run wasm2js && npm run build:zip",
-    "build:wasm": "cd .. && wasm-pack build --out-dir ./wasm2js/pkg",
+    "clean": "rimraf pkg target",
+    "build": "npm run clean && npm run build:wasm && npm run wasm2js && npm run pack",
+    "build:wasm": "cd .. && wasm-pack build --release --out-dir ./wasm2js/pkg",
     "wasm2js": "node scripts/wasm2js.js",
-    "build:zip": "node scripts/create-zip.js",
+    "pack": "node scripts/pack.js",
     "dev": "cd frontend && vite",
     "update:cargo-deps": "node scripts/update-cargo-deps.js"
   },
